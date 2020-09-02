@@ -2723,10 +2723,6 @@ void MainWindow::onTrayActionTriggered(const QVariantMap &data, bool omitPaste)
 
 void MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
-#ifdef Q_OS_MAC
-    // Don't do this on OS X, we only ever get "Trigger"
-    Q_UNUSED(reason);
-#else
     if ( reason == QSystemTrayIcon::MiddleClick
          || (m_options.trayMenuOpenOnLeftClick && reason == QSystemTrayIcon::Trigger) )
     {
@@ -2740,7 +2736,6 @@ void MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
             showWindow();
 
     }
-#endif // Q_OS_MAC
 }
 
 bool MainWindow::toggleMenu()
